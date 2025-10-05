@@ -1,0 +1,15 @@
+{
+  "name": "community-dex",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:ui": "yarn workspace @community-dex/ui dev",
+    "build:ui": "yarn workspace @community-dex/ui build",
+    "build:packages": "node scripts/build-packages.js"
+  }
+}

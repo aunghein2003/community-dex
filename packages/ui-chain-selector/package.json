@@ -1,0 +1,43 @@
+{
+  "name": "@orderly.network/ui-chain-selector",
+  "version": "2.7.3",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "build": "tsup",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Orderly"
+  ],
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@orderly.network/i18n": "*",
+    "@orderly.network/hooks": "*",
+    "@orderly.network/types": "*",
+    "@orderly.network/ui": "*",
+    "@orderly.network/react-app": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.4.4",
+    "tsconfig": "*",
+    "typescript": "^5.1.6",
+    "tsup": "^7.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  }
+}

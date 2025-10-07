@@ -17747,7 +17747,7 @@ tsup@^7.1.0, tsup@^7.3.0:
     sucrase "^3.20.3"
     tree-kill "^1.2.2"
 
-tsup@^8.1.0:
+tsup@^8.5.0:
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/tsup/-/tsup-8.5.0.tgz#4b1e25b1a8f4e4f89b764207bf37cfe2d7411d31"
   integrity sha512-VmBp77lWNQq6PfuMqCHD3xWl22vEoWsKajkF8t+yMBawlUS8JzEI+vOVMeuNZIuMML8qXRizFKi9oD5glKQVcQ==

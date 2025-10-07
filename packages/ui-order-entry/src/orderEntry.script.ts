@@ -37,11 +37,11 @@ export const useOrderEntryScript = (inputs: OrderEntryScriptInputs) => {
   const { symbol } = inputs;
   const [localOrderType, setLocalOrderType] = useLocalStorage(
     "orderly-order-entry-order-type",
-    OrderType.LIMIT,
+    OrderType.LIMIT
   );
   const [localOrderSide, setLocalOrderSide] = useLocalStorage(
     "orderly-order-entry-order-side",
-    OrderSide.BUY,
+    OrderSide.BUY
   );
 
   const symbolLeverage = useLeverageBySymbol(symbol);
@@ -50,7 +50,7 @@ export const useOrderEntryScript = (inputs: OrderEntryScriptInputs) => {
 
   const [soundAlert, setSoundAlert] = useLocalStorage<boolean>(
     ORDERLY_ORDER_SOUND_ALERT_KEY,
-    notification?.orderFilled?.defaultOpen ?? false,
+    notification?.orderFilled?.defaultOpen ?? false
   );
 
   const canTrade = useCanTrade();
@@ -72,7 +72,7 @@ export const useOrderEntryScript = (inputs: OrderEntryScriptInputs) => {
 
   const [tpslSwitch, setTpslSwitch] = useLocalStorage(
     "orderly-order-entry-tp_sl-switch",
-    false,
+    false
   );
 
   const { currentLeverage } = useMarginRatio();
@@ -125,7 +125,7 @@ export const useOrderEntryScript = (inputs: OrderEntryScriptInputs) => {
       value: any,
       options?: {
         shouldUpdateLastChangedField?: boolean;
-      },
+      }
     ) => {
       if (key === "order_type") {
         setLocalOrderType(value);
@@ -177,7 +177,7 @@ export const useOrderEntryScript = (inputs: OrderEntryScriptInputs) => {
       }
 
       setValue(key, value, options);
-    },
+    }
   );
 
   const onTPSLSwitchChanged = (state: boolean) => {
@@ -375,7 +375,7 @@ export const useOrderEntryScript = (inputs: OrderEntryScriptInputs) => {
     triggerPriceInputRef,
     activatedPriceInputRef,
 
-    canTrade,
+    canTrade: true,
     bboStatus,
     bboType,
     onBBOChange,

@@ -63,7 +63,7 @@ const LazyRiskRateWidget = React.lazy(() =>
     return {
       default: mod.RiskRateWidget,
     };
-  }),
+  })
 );
 
 const LazyAssetViewWidget = React.lazy(() =>
@@ -71,7 +71,7 @@ const LazyAssetViewWidget = React.lazy(() =>
     return {
       default: mod.AssetViewWidget,
     };
-  }),
+  })
 );
 
 const LazyDataListWidget = React.lazy(() =>
@@ -79,7 +79,7 @@ const LazyDataListWidget = React.lazy(() =>
     return {
       default: mod.DataListWidget,
     };
-  }),
+  })
 );
 
 const LazySwitchLayout = React.lazy(() =>
@@ -87,7 +87,7 @@ const LazySwitchLayout = React.lazy(() =>
     return {
       default: mod.SwitchLayout,
     };
-  }),
+  })
 );
 
 const LazyOrderBookAndTradesWidget = React.lazy(() =>
@@ -95,7 +95,7 @@ const LazyOrderBookAndTradesWidget = React.lazy(() =>
     return {
       default: mod.OrderBookAndTradesWidget,
     };
-  }),
+  })
 );
 
 export type DesktopLayoutProps = TradingState & {
@@ -152,12 +152,12 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
 
   const [tradingViewFullScreen] = useLocalStorage(
     TradingviewFullscreenKey,
-    false,
+    false
   );
 
   const [sortableItems, setSortableItems] = useLocalStorage<string[]>(
     OrderEntrySortKeys,
-    ["margin", "assets", "orderEntry"],
+    ["orderEntry"]
   );
 
   const dropAnimationConfig = useMemo(() => {
@@ -219,7 +219,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
     }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    }),
+    })
   );
 
   // State for drag overlay management
@@ -294,7 +294,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
         // -8 is for reducing the container's padding
         "oui-sticky oui-z-30 oui-mb-[-8px] oui-py-2",
         // Split line disabled for > 2xl screens
-        !max2XL && "oui-mt-[-8px]",
+        !max2XL && "oui-mt-[-8px]"
       )}
       style={{
         bottom: 0,
@@ -367,12 +367,12 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
         root: cn(
           tradingViewFullScreen
             ? "!oui-absolute oui-top-0 oui-left-0 oui-right-0 oui-bottom-0 oui-z-[40] oui-bg-base-10"
-            : "oui-z-1",
+            : "oui-z-1"
         ),
         content: cn(
           tradingViewFullScreen
             ? "oui-top-3 oui-bottom-3 oui-left-3 oui-right-3 oui-bg-base-9 oui-rounded-[16px] oui-overflow-hidden"
-            : "",
+            : ""
         ),
       }}
       symbol={props.symbol}
@@ -447,16 +447,17 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
       margin: {
         className: "",
         element: (
-          <React.Suspense fallback={null}>
-            <LazyRiskRateWidget />
-          </React.Suspense>
+          <></>
+          // <React.Suspense fallback={null}>
+          //   <LazyRiskRateWidget />
+          // </React.Suspense>
         ),
       },
       assets: {
         className: "oui-border oui-border-line-12",
         element: (
           <>
-            <React.Suspense fallback={null}>
+            {/* <React.Suspense fallback={null}>
               <LazyAssetViewWidget
                 isFirstTimeDeposit={props.isFirstTimeDeposit}
               />
@@ -464,7 +465,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
             <DepositStatusWidget
               className="oui-mt-3 oui-gap-y-2"
               onClick={props.navigateToPortfolio}
-            />
+            /> */}
           </>
         ),
       },
@@ -634,7 +635,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
                 "oui-flex oui-flex-1",
                 "oui-size-full oui-min-w-[1018px]",
                 "oui-px-3 oui-py-2",
-                props.className,
+                props.className
               )}
               onSizeChange={setDataListSplitHeightSM}
               onDragging={props.onDataListSplitHeightDragging}
@@ -645,7 +646,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
                 itemAlign="stretch"
                 className={cn(
                   "oui-flex-1",
-                  layout === "left" && "oui-flex-row-reverse",
+                  layout === "left" && "oui-flex-row-reverse"
                 )}
                 style={{
                   minHeight: Math.max(
@@ -653,7 +654,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
                       tradindviewMinHeight +
                       orderbookMinHeight +
                       space * 2,
-                    props.orderEntryHeight,
+                    props.orderEntryHeight
                   ),
                   maxHeight:
                     symbolInfoBarHeight +
@@ -682,7 +683,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
                     }}
                     className={cn(
                       "oui-flex-1",
-                      layout === "left" && "oui-flex-row-reverse",
+                      layout === "left" && "oui-flex-row-reverse"
                     )}
                   >
                     {marketLayout === "left" && (
@@ -738,6 +739,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
                     </SplitLayout>
                   </Flex>
                 </Flex>
+
                 <Flex
                   ref={props.orderEntryViewRef}
                   id="orderEntryView"
@@ -809,6 +811,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
             </SplitLayout>
           </Box>
         </SortableContext>
+
         <DragOverlay dropAnimation={dropAnimationConfig}>
           {activeId ? (
             <SortablePanel
@@ -854,7 +857,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
             props.className,
             "oui-justify-start",
             tradingViewFullScreen &&
-              "oui-relative oui-h-[calc(100vh-80px)] oui-w-screen oui-overflow-hidden !oui-p-0",
+              "oui-relative oui-h-[calc(100vh-80px)] oui-w-screen oui-overflow-hidden !oui-p-0"
           )}
           width="100%"
           p={2}
@@ -869,7 +872,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
           <Flex
             className={cn(
               "oui-flex-1 oui-overflow-hidden",
-              layout === "left" && "oui-flex-row-reverse",
+              layout === "left" && "oui-flex-row-reverse"
             )}
             gap={2}
           >

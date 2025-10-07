@@ -87,11 +87,11 @@ export const OrderEntry: React.FC<OrderEntryProps> = (props) => {
 
   const [needConfirm, setNeedConfirm] = useLocalStorage(
     "orderly_order_confirm",
-    true,
+    true
   );
   const [pinned, setPinned] = useLocalStorage(
     "orderly-order-additional-pinned",
-    true,
+    true
   );
   const [showTPSLAdvanced, setShowTPSLAdvanced] = useState(false);
   const [hidden, setHidden] = useLocalStorage("orderly-order-hidden", false);
@@ -199,7 +199,7 @@ export const OrderEntry: React.FC<OrderEntryProps> = (props) => {
           setErrorMsgVisible(true);
 
           return Promise.reject();
-        },
+        }
       )
       .then(() => {
         // validate success, submit order
@@ -261,7 +261,7 @@ export const OrderEntry: React.FC<OrderEntryProps> = (props) => {
         if (Object.keys(errors).every((key: string) => tpslKey.has(key))) {
           setShowTPSLAdvanced(true);
         }
-      },
+      }
     );
     // modal.show(TPSLAdvancedDialogId, {
     //   order: formattedOrder,
@@ -404,11 +404,12 @@ export const OrderEntry: React.FC<OrderEntryProps> = (props) => {
           className={cn(
             side === OrderSide.BUY
               ? "orderly-order-entry-submit-button-buy oui-bg-success-darken hover:oui-bg-success-darken/80 active:oui-bg-success-darken/80"
-              : "orderly-order-entry-submit-button-sell oui-bg-danger-darken hover:oui-bg-danger-darken/80 active:oui-bg-danger-darken/80",
+              : "orderly-order-entry-submit-button-sell oui-bg-danger-darken hover:oui-bg-danger-darken/80 active:oui-bg-danger-darken/80"
           )}
-          onClick={validateSubmit}
+          onClick={onSubmit}
           loading={props.isMutating}
-          disabled={!props.canTrade}
+          disabled={false}
+          // disabled={!props.canTrade}
         >
           {buttonLabel}
         </ThrottledButton>
@@ -546,7 +547,7 @@ export const OrderEntry: React.FC<OrderEntryProps> = (props) => {
             "oui-rounded-[16px] oui-border-none !oui-p-0",
             isMobile
               ? "oui-inset-y-0 oui-right-0 oui-w-[280px]"
-              : "!oui-bottom-[40px] oui-right-3 oui-top-[44px] !oui-h-auto oui-w-[360px]",
+              : "!oui-bottom-[40px] oui-right-3 oui-top-[44px] !oui-h-auto oui-w-[360px]"
           ),
         }}
         contentProps={{ side: "right", closeable: false }}
